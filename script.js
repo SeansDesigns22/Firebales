@@ -21,10 +21,12 @@ document.addEventListener("DOMContentLoaded", function() {
     const addEventButton = document.getElementById('addEventButton');
     const prevMonthButton = document.getElementById('prevMonth');
     const nextMonthButton = document.getElementById('nextMonth');
+    const removeBaleButton = document.getElementById('removeBaleButton');
 
     let eventsData = [];
     let currentMonth = new Date().getMonth();
     let currentYear = new Date().getFullYear();
+    let selectedBaleNumber = null;
 
     function updateCalendar() {
         calendar.innerHTML = '';
@@ -62,6 +64,7 @@ document.addEventListener("DOMContentLoaded", function() {
                     baleNumber.className = 'bale-number';
                     baleNumber.innerText = event["Bale Number"];
                     baleNumber.onclick = () => {
+                        selectedBaleNumber = event["Bale Number"];
                         eventDetails.innerHTML = `
                             <p><strong>Bale Number:</strong> ${event["Bale Number"]}</p>
                             <p><strong>Location:</strong> ${event["Location"]}</p>
@@ -150,6 +153,25 @@ document.addEventListener("DOMContentLoaded", function() {
             updateCalendar();
         })
         .catch(error => console.error('Error adding data:', error));
+    });
+
+    // Handle removal of events
+    removeBaleButton.addEventListener('click', function() {
+        if (selectedBaleNumber === null) return;
+
+        eventsData = eventsData.filter(event => event["Bale Number"] !== selectedBaleNumber);
+
+        fetch('update_data.php', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ action: 'remove', baleNumber: selectedBaleNumber })
+        })
+        .then(response => response.json())
+        .then(() => {
+            eventModal.style.display = 'none';
+            updateCalendar();
+        })
+        .catch(error => console.error('Error removing data:', error));
     });
 
     function loadEvents() {
