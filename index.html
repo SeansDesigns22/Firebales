@@ -3,26 +3,72 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Calendar Web App</title>
-    <style>
-        /* Add basic styles for the calendar */
-        table {
-            width: 100%;
-            border-collapse: collapse;
-        }
-        th, td {
-            border: 1px solid #ddd;
-            padding: 8px;
-            text-align: left;
-        }
-        th {
-            background-color: #f2f2f2;
-        }
-    </style>
+    <title>Calendar</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <h1>Calendar Web App</h1>
-    <div id="calendar"></div>
+    <div id="calendar-container">
+        <div id="header">
+            <button id="prevMonth">&lt; Previous</button>
+            <h1 id="monthYear"></h1>
+            <button id="nextMonth">Next &gt;</button>
+        </div>
+        <button id="addEventButton">Add New Event</button>
+        <div id="calendar"></div>
+        <div id="totals" class="totals"></div>
+    </div>
+
+    <!-- Modal for viewing event details -->
+    <div id="eventModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Event Details</h2>
+            <p id="eventDetails"></p>
+        </div>
+    </div>
+
+    <!-- Modal for editing events -->
+    <div id="editModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Edit Event</h2>
+            <form id="editForm" class="edit-form">
+                <label for="editBaleNumber">Bale Number:</label>
+                <input type="number" id="editBaleNumber" readonly>
+                <label for="editLocation">Location:</label>
+                <input type="text" id="editLocation" required>
+                <label for="editFinalLocation">Final Location:</label>
+                <input type="text" id="editFinalLocation" required>
+                <label for="editDateReceived">Date Received:</label>
+                <input type="date" id="editDateReceived" required>
+                <label for="editCoolOffDate">Cool Off Date:</label>
+                <input type="date" id="editCoolOffDate" required>
+                <button type="submit">Save Changes</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Modal for adding new events -->
+    <div id="addModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Add New Event</h2>
+            <form id="addForm" class="edit-form">
+                <label for="addBaleNumber">Bale Number:</label>
+                <input type="number" id="addBaleNumber" required>
+                <label for="addLocation">Location:</label>
+                <input type="text" id="addLocation" required>
+                <label for="addFinalLocation">Final Location:</label>
+                <input type="text" id="addFinalLocation" required>
+                <label for="addDateReceived">Date Received:</label>
+                <input type="date" id="addDateReceived" required>
+                <label for="addCoolOffDate">Cool Off Date:</label>
+                <input type="date" id="addCoolOffDate" required>
+                <button type="submit">Add Event</button>
+            </form>
+        </div>
+    </div>
+
     <script src="script.js"></script>
 </body>
 </html>
