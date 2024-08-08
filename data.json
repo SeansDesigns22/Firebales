@@ -1,12 +1,6 @@
-[
-    {
-        "date": "2024-08-01",
-        "title": "Event 1",
-        "description": "Description for Event 1"
-    },
-    {
-        "date": "2024-08-02",
-        "title": "Event 2",
-        "description": "Description for Event 2"
-    }
-]
+[{"Bale Number":2130677,"Location":"007-001-1","Final Location":"009-001-1","Date Received":"7/14/2024","Cool Off Date":"7/28/2024"},
+{"Bale Number":2130678,"Location":"007-001-1","Final Location":"009-001-1","Date Received":"7/24/2024","Cool Off Date":"8/7/2024"},
+{"Bale Number":2130685,"Location":"007-001-1","Final Location":"009-001-1","Date Received":"7/25/2024","Cool Off Date":"8/8/2024"},
+{"Bale Number":4555123,"Location":"009-001-1","Final Location":"010-001-1","Date Received":"8/6/2024","Cool Off Date":"8/20/2024"},
+{"Bale Number":4555487,"Location":"009-001-1","Final Location":"011-001-1","Date Received":"8/8/2024","Cool Off Date":"8/22/2024"},
+{"Bale Number":4651214,"Location":"004-001-1","Final Location":"010-002-1","Date Received":"10/8/2024","Cool Off Date":"10/22/2024"}]
